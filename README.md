@@ -31,7 +31,7 @@ I think that this is a decent balance between usablity and simplicity.
 
 ### Implementation
 
-The full code for the implementation can be found in the src/ folder but I'll just highlight some design decisions.
+The full code for the implementation can be found in the [src/](https://github.com/a4rsh/8-bit-cpu/tree/main/src) folder but I'll just highlight some design decisions.
 
 The Artithmetic/Logic Unit (ALU) was fairly simple as it was purely combinational. For the registers, program counter, and memory I made reads combinational, and writes sequential. For example I can specify the register to be read through in_1 and out_1 will be updated immediately, but to write to a register, write enable (wen) and the data in must be enabled and a clock cycle must be waited.
 
@@ -40,7 +40,7 @@ The CPU module was then just putting these pieces together and implementing inst
 
 ### Testing
 
-I wanted to take advantage of the modularity of this code. So I wrote testbenches for each module to make my life easier at the end. This was good practice as well because I'm exploring Hardware Verification.
+I wanted to take advantage of the modularity of this code. So I wrote [testbenches](https://github.com/a4rsh/8-bit-cpu/tree/main/tb) for each module to make my life easier at the end. This was good practice as well because I'm exploring Hardware Verification.
 
 For testing the full design I made a module to simulate memory which reads from the input file program.bin and outputs to memory.bin 
 
