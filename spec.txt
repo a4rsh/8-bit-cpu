@@ -1,0 +1,90 @@
+Specifications
+
+8 bit instructions
+PC increments by 1 after each instruction
+
+8 bit memory address -> 256 Bytes
+Four 8 bit registers
+
+Instruction Set
+
+R/W
+- Write value to upper 4 bits of register (WUP)
+- Write value to lower 4 bits of register (WLO)
+- Move value from one register to another (MOVE)
+- Load value from memory into register (LOAD)
+- Save value from register into memory (SAVE)
+
+Arithmetic
+- Add value from one register to another (ADD)
+- Subtract value from one register to another (SUB)
+
+Bitwise
+- And two registers and store in one (AND)
+- Xor two registers and store in one (XOR)
+
+Jump (to value stored in register, value in another register meets condition)
+- Jump unconditionally (JMP)
+- Jump if result is equal to zero (JEQ)
+    Might rework to use hardcoded registers to include these
+    - Jump if result is not equal to zero (JNE)
+    - Jump if restult is less than zero (JLZ)
+    - Jump if result is greater than zero (JGZ)
+    - Jump if restult is less than or equal to zero (JLE)
+    - Jump if result is greater than or equal to zero (JGE)
+
+Misc
+- Halt the program (HALT)
+
+
+4 Registers R0-R4 (A, B, C, D)
+
+Given ins[7:0]
+
+ins[7:5]: (OP Codes)
+    000 (0) - WLO
+    001 (1) - WUP
+    010 (2) - MOVE
+    011 (3) - LOAD/SAVE
+    100 (4) - ADD/SUB (Arithmetic)
+    101 (5) - AND/XOR (Bitwise)
+    110 (6) - JMP/JEQ (Jumps)
+    111 (7) - HALT
+
+
+Instruction Spec for in[4:0]
+
+WUP & WLO (Can only directly write to A or B)
+- Register: in[4]
+- Value: in[3:0]
+
+MOVE    
+- Ignored: in[4] // Could use for MULT, DIV, OR, etc...
+- Destination Register: in[3:2]
+- Source Register: in[1:0]
+
+LOAD/SAVE
+- Load (0), Save (1): in[4]
+- Value Register: in[3:2]
+- Address Register: in[1:0]
+
+Arithmetic
+- ADD (0), SUB (1): in[4]
+- Operand 1: in[3:2] (Desitation Register)
+- Operand 2: in[1:0]
+
+Bitwise
+Arithmetic
+- AND (0), XOR (1): in[4]
+- Operand 1: in[3:2] (Desitation Register)
+- Operand 2: in[1:0]
+
+Jumps
+- in[4]: 
+    0: JMP
+    1: JEQ
+- Destination Register: in[3:2]
+- Value Register: in[1:0]
+
+HALT
+- in[4:0]: Ignored  // Could use for MULT, DIV, OR, etc...
