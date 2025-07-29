@@ -42,6 +42,6 @@ The CPU module was then just putting these pieces together and implementing inst
 
 I wanted to take advantage of the modularity of this code. So I wrote [testbenches](https://github.com/a4rsh/8-bit-cpu/tree/main/tb) for each module to make my life easier at the end. This was good practice as well because I'm exploring Hardware Verification.
 
-For testing the full design I made a module to simulate memory which reads from the input file program.bin and outputs to memory.bin 
+For testing the full design I made a module to simulate memory which reads from the input file `program.bin` and outputs to `memory.bin` when `./Vcpu` is ran. (`make cpu` must be ran first)
 
-Although the basics of this setup work, admittedly I have not fully tested the CPU design itself because I got really tired of looking at binary instructions. So I've decided that I'll make an assembler so that I can write more human-readable code that will automatically translate into binary instrcutions. After that is complete, I'll use it to more throughly verify my design.
+Although the basics of this setup work, admittedly I have not thoroughly tested the CPU design itself because I got really tired of looking at binary instructions. So I've decided that I'll make an assembler so that I can write more human-readable code that will automatically translate into binary instrcutions. After that is complete, I'll use it to more throughly verify my design.
